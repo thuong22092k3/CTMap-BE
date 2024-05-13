@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import AccidentModel from "../models/Accident";
+import AccidentModel from "../../models/Accident";
 
 export const updateAccident = async (req: Request, res: Response) => {
   try {

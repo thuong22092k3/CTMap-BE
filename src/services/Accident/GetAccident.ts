@@ -1,4 +1,4 @@
-import AccidentModel from "../models/Accident";
+import AccidentModel from "../../models/Accident";
 import { Request, Response } from "express";
 
 export const getAllAccidents = async (req: Request, res: Response) => {
@@ -60,4 +60,3 @@ export const searchAccidentsByText = async (req: Request, res: Response) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 };
-

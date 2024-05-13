@@ -1,4 +1,4 @@
-import Accident from "../models/Accident";
+import Accident from "../../models/Accident";
 import { Request, Response } from "express";
 
 export const deleteAccident = async (req: Request, res: Response) => {
