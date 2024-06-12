@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { IUser } from "../interfaces/User";
+
 const UserSchema = new Schema<IUser>({
   userName: {
     type: "String",
@@ -17,6 +18,15 @@ const UserSchema = new Schema<IUser>({
     required: true,
     default: "",
   },
+  resetPasswordToken: {
+    type: "String",
+    default: null,
+  },
+  resetPasswordExpires: {
+    type: "Date",
+    default: null,
+  },
 });
+
 const UserModel = model<IUser>("User", UserSchema);
 export default UserModel;
