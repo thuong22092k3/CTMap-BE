@@ -32,7 +32,7 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
   try {
     // Tạo OTP và thời gian hết hạn
     const otp = generateOTP();
-    const expires = Date.now() + 30000; // 30 giây
+    const expires = Date.now() + 60000; // 30 giây
 
     const mailOptions = {
       to: email,
