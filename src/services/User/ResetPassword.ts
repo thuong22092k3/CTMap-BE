@@ -5,13 +5,11 @@ import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import UserModel from "../../models/User";
 
-dotenv.config(); // Load environment variables
+dotenv.config();
 
-// In ra biến môi trường để kiểm tra
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
 
-// Cấu hình dịch vụ email
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -20,19 +18,16 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Hàm tạo OTP gồm 6 số
 const generateOTP = () => {
-  return Math.floor(100000 + Math.random() * 900000).toString(); // Tạo số ngẫu nhiên trong khoảng 100000 - 999999
+  return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-// Gửi mã xác nhận qua email
 export const sendResetPasswordEmail = async (req: Request, res: Response) => {
   const { email } = req.body;
 
   try {
-    // Tạo OTP và thời gian hết hạn
     const otp = generateOTP();
-    const expires = Date.now() + 60000; // 30 giây
+    const expires = Date.now() + 180000;
 
     const mailOptions = {
       to: email,
@@ -52,7 +47,6 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
         .status(200)
         .send({ message: "Mã xác nhận đã được gửi đến email của bạn" });
 
-      // Lưu OTP và thời gian hết hạn vào cơ sở dữ liệu
       await UserModel.updateOne(
         { email },
         {
@@ -70,7 +64,6 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
   }
 };
 
-// Xác nhận mã xác nhận
 export const verifyResetPasswordToken = async (req: Request, res: Response) => {
   const { email, code } = req.body;
 
@@ -94,7 +87,6 @@ export const verifyResetPasswordToken = async (req: Request, res: Response) => {
   }
 };
 
-// Đổi mật khẩu
 export const changePassword = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
