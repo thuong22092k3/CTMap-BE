@@ -20,8 +20,8 @@ export const addAccident = async (req: Request, res: Response) => {
       !position ||
       !level ||
       !cause ||
-      !sophuongtienlienquan ||
-      !link
+      !sophuongtienlienquan
+      // !link
     ) {
       return res
         .status(400)
