@@ -34,6 +34,10 @@ const AccidentSchema = new Schema<IAccident>({
     type: "String",
     required: false,
   },
+  userName: {
+    type: "String",
+    required: false,
+  },
 });
 
 const AccidentModel = model<IAccident>("Accident", AccidentSchema);
