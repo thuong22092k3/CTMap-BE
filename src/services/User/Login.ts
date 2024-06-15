@@ -22,7 +22,6 @@
 
 import UserModel from "../../models/User";
 import { Request, Response } from "express";
-import bcrypt from "bcrypt";
 
 export const login = async (req: Request, res: Response) => {
   try {
@@ -41,12 +40,7 @@ export const login = async (req: Request, res: Response) => {
 
     if (user) {
       // Kiểm tra mật khẩu
-      const isPasswordValid = await bcrypt.compare(
-        password as string,
-        user.password
-      );
-
-      if (isPasswordValid) {
+      if (password === user.password) {
         console.log("User:", user);
         res.send({ success: true, data: user });
       } else {
