@@ -97,7 +97,6 @@ export const changePassword = async (req: Request, res: Response) => {
       return res.status(404).send({ message: "Email không tồn tại" });
     }
 
-    // Lưu mật khẩu trực tiếp vào cơ sở dữ liệu mà không băm
     user.password = password;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;

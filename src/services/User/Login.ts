@@ -33,7 +33,6 @@ export const login = async (req: Request, res: Response) => {
         .send({ success: false, message: "Missing login or password" });
     }
 
-    // Tìm người dùng bằng username hoặc email
     const user = await UserModel.findOne({
       $or: [{ userName: login }, { email: login }],
     });
