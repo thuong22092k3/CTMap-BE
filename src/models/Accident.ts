@@ -32,7 +32,7 @@ const AccidentSchema = new Schema<IAccident>({
   },
   link: {
     type: "String",
-    required: true,
+    required: false,
   },
 });
 
