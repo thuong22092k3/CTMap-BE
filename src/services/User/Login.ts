@@ -26,7 +26,13 @@ import bcrypt from "bcrypt";
 
 export const login = async (req: Request, res: Response) => {
   try {
-    const { login, password } = req.body;
+    const { login, password } = req.query;
+
+    if (!login || !password) {
+      return res
+        .status(400)
+        .send({ success: false, message: "Missing login or password" });
+    }
 
     // Tìm người dùng bằng username hoặc email
     const user = await UserModel.findOne({
@@ -35,7 +41,10 @@ export const login = async (req: Request, res: Response) => {
 
     if (user) {
       // Kiểm tra mật khẩu
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+      const isPasswordValid = await bcrypt.compare(
+        password as string,
+        user.password
+      );
 
       if (isPasswordValid) {
         console.log("User:", user);
