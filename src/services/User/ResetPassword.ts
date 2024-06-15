@@ -97,8 +97,8 @@ export const changePassword = async (req: Request, res: Response) => {
       return res.status(404).send({ message: "Email không tồn tại" });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    user.password = hashedPassword;
+    // Lưu mật khẩu trực tiếp vào cơ sở dữ liệu mà không băm
+    user.password = password;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
 
