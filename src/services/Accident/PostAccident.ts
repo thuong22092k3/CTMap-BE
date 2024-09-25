@@ -3,7 +3,7 @@ import AccidentModel from "../../models/Accident";
 import openGeocoder from "node-open-geocoder";
 
 const parsePosition = (position: string) => {
-  const [lat, lng] = position.split(" ").map(Number);
+  const [lat, lng] = position.split(", ").map(Number); //đổi
   return { lat, lng };
 };
 
@@ -13,7 +13,7 @@ const getLocationFromLatLng = async (
 ): Promise<{ location: string; city: string }> => {
   return new Promise((resolve, reject) => {
     openGeocoder()
-      .reverse(lat, lng)
+      .reverse(lng, lat) //đổi
       .end((err: any, res: any) => {
         if (err) {
           console.error("Error getting location from OpenStreetMap:", err);
