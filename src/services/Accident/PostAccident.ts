@@ -3,7 +3,7 @@ import AccidentModel from "../../models/Accident";
 import openGeocoder from "node-open-geocoder";
 
 const parsePosition = (position: string) => {
-  const [lat, lng] = position.split(",").map(Number);
+  const [lat, lng] = position.split(" ").map(Number);
   return { lat, lng };
 };
 
