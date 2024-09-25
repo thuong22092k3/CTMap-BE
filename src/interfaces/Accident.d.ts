@@ -5,6 +5,9 @@ export interface IAccident {
   position: string;
   level: number;
   cause: number;
-  sophuongtienlienquan:number;
+  sophuongtienlienquan: number;
   link: string;
+  userName: string;
+  location: string;
+  city: string;
 }

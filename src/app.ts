@@ -13,7 +13,7 @@ app.use("/", router);
 
 mongoose
   .connect(
-    "mongodb+srv://admin:admin@ctmap.h2a0aqu.mongodb.net/CTMap?retryWrites=true&w=majority&appName=CTmap"
+    "mongodb+srv://admin:admin@ctmap.g0hzt.mongodb.net/CTMap?retryWrites=true&w=majority&appName=CTMap"
   )
   .then(() => {
     app.listen(3000, () => {
