@@ -13,7 +13,7 @@ const getLocationFromLatLng = async (
 ): Promise<{ location: string; city: string }> => {
   return new Promise((resolve, reject) => {
     openGeocoder()
-      .reverse(lng, lat)
+      .reverse(lat, lng)
       .end((err: any, res: any) => {
         if (err) {
           console.error("Error getting location from OpenStreetMap:", err);
