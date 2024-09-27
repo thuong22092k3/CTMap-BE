@@ -3,7 +3,7 @@ import AccidentModel from "../../models/Accident";
 import openGeocoder from "node-open-geocoder";
 
 const parsePosition = (position: string) => {
-  const [lat, lng] = position.split(", ").map(Number); //đổi
+  const [lat, lng] = position.split(", ").map(Number);
   return { lat, lng };
 };
 
@@ -13,7 +13,7 @@ const getLocationFromLatLng = async (
 ): Promise<{ location: string; city: string }> => {
   return new Promise((resolve, reject) => {
     openGeocoder()
-      .reverse(lng, lat) //đổi
+      .reverse(lng, lat)
       .end((err: any, res: any) => {
         if (err) {
           console.error("Error getting location from OpenStreetMap:", err);
@@ -51,6 +51,7 @@ export const addAccident = async (req: Request, res: Response) => {
       cause,
       sophuongtienlienquan,
       link,
+      userName, //Thêm ở đây
     } = req.body;
 
     if (
@@ -74,6 +75,7 @@ export const addAccident = async (req: Request, res: Response) => {
       ...req.body,
       location,
       city,
+      userName: userName || "", // Thêm ở đây
     });
 
     return res.status(200).json({ accident: newAccident });
