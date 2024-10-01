@@ -4,4 +4,5 @@ export interface IUser {
   password: string;
   resetPasswordToken?: string;
   resetPasswordExpires?: Date;
+  showUserName?: boolean;
 }
