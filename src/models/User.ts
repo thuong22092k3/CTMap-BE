@@ -26,10 +26,6 @@ const UserSchema = new Schema<IUser>({
     type: "Date",
     default: null,
   },
-  showUserName: {
-    type: "Boolean",
-    default: false,
-  },
 });
 
 const UserModel = model<IUser>("User", UserSchema);

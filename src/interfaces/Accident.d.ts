@@ -10,4 +10,5 @@ export interface IAccident {
   userName: string;
   location: string;
   city: string;
+  showUserName?: boolean;
 }

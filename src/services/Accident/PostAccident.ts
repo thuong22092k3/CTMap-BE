@@ -99,7 +99,8 @@ export const addAccident = async (req: Request, res: Response) => {
       cause,
       sophuongtienlienquan,
       link,
-      userName, //Thêm ở đây
+      userName,
+      showUserName, //Thêm ở đây
     } = req.body;
 
     if (
@@ -123,7 +124,8 @@ export const addAccident = async (req: Request, res: Response) => {
       ...req.body,
       location,
       city,
-      userName: userName || "", // Thêm ở đây
+      userName: userName || "",
+      showUserName: showUserName || false, // Thêm ở đây
     });
 
     return res.status(200).json({ accident: newAccident });
