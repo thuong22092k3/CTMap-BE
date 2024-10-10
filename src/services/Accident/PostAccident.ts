@@ -125,7 +125,7 @@ export const addAccident = async (req: Request, res: Response) => {
       location,
       city,
       userName: userName || "",
-      showUserName: showUserName || true, // Thêm ở đây
+      showUserName: typeof showUserName !== "undefined" ? showUserName : true,
     });
 
     return res.status(200).json({ accident: newAccident });

@@ -48,6 +48,7 @@ const AccidentSchema = new Schema<IAccident>({
   },
   showUserName: {
     type: "Boolean",
+    required: false,
     default: false,
   },
 });
